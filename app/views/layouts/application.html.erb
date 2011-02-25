@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag :all %>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+    <script src="/javascripts/ejs_production.js?1256730558" type="text/javascript"></script>
+    <script src="/javascripts/application.js?1256730558" type="text/javascript"></script>
+  </head>
+
+  <body>
+
+<div id="topline"></div>
+
+<div id="headwrap">
+
+<div class="container_24">
+
+
+    <div id="logo">
+      <%= link_to (image_tag "logo3.png"), root_url %>
+    </div>
+
+    <div id="alphabet">
+      <% @letters.each do |f| %>
+      <%= link_to f, root_path+'#letter/'+f %>
+      <% end %>
+    </div>
+
+    <div id="new_button">
+      <a class="sexybutton sexysimple sexyblue sexyxl" type="reset" href="#definition/new" ><div id="new_button_txt">New Definition</div></a>
+    </div>
+
+</div>
+
+</div>
+
+    <div class='clear'></div>
+
+
+
+<div id="bottomwrap">
+
+  <div class="container_24">
+
+    <div class="grid_16">
+
+      <div id="main">
+
+        <ul id="words_list">
+        </ul>
+
+        <div id='word_title'>
+        </div>
+
+
+        <ul id="definitions">
+        </ul>
+
+
+        <div id='pagination'>
+        </div>
+
+        <div id='new_def'>
+        </div>
+
+        <div id='show_def'>
+        </div>
+
+        <div id='login_page'>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="grid_8">
+
+      <div id='sidebar'>
+
+          <div id='loggedas'>
+                <div><% if session[:user] %>
+                logged in as <%= session[:user] %><a href="/#session">logout</a>
+                <% end %>
+                </div>
+              
+          </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+    <div class='clear'></div>
+
+
+  </body>
+</html>
+

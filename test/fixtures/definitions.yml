@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  word_id: 1
+  definition: MyText
+  upv: 1
+  dwv: 1
+
+two:
+  word_id: 1
+  definition: MyText
+  upv: 1
+  dwv: 1
