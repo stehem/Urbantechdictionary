@@ -187,11 +187,11 @@ DefinitionsView = Backbone.View.extend({
     this.render();
       },
     render : function() {
-    $(this.el).html(new EJS({url: '/javascripts/definition.ejs'}).render({definition: this.model.get('definition'), upv: this.model.get('upv'),dwv: this.model.get('dwv')}));
+    $(this.el).html(new EJS({url: '/javascripts/definition.ejs'}).render({definition: this.model.get('definition'), upv: this.model.get('upv'),dwv: this.model.get('dwv'),poster: this.model.get('poster')}));
     $(this.el).appendTo('#definitions');
      },
     update: function(){
-    $(this.el).html(new EJS({url: '/javascripts/definition.ejs'}).render({definition: this.model.get('definition'), upv: this.model.get('upv'),dwv: this.model.get('dwv')}));
+    $(this.el).html(new EJS({url: '/javascripts/definition.ejs'}).render({definition: this.model.get('definition'), upv: this.model.get('upv'),dwv: this.model.get('dwv'),poster: this.model.get('poster')}));
      }
 });
 

@@ -10,7 +10,7 @@ end
 
 def show
   word = Word.find(params[:id])
-  defs = word.definitions.select('id, definition, upv, dwv').order('upv DESC').paginate(:all, :page => params[:page] || 1, :per_page => 10)
+  defs = word.definitions.select('id, definition, upv, dwv, poster').order('created_at DESC').paginate(:all, :page => params[:page] || 1, :per_page => 10)
   render :json => { :word => {:word => word.word, :id => word.id},
                     :coll => defs,
                     :pagination => {:current_page => defs.current_page,

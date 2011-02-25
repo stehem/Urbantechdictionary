@@ -6,6 +6,8 @@ img {
 	src: url('/stylesheets/GoodDog.otf');
 }
 
+
+
 body, h1 {
   font-family: "Droid Sans", Helvetica, Arial, "Liberation Sans", "DejaVu Sans", sans;
   margin: 0;
@@ -95,8 +97,18 @@ ul{
 
 .minus_score{
 	font-family: good_dog; /* no .ttf */
-  color: orange; }
+  color: #DAA520; }
 
 .plus, .minus{
   margin-top: 4px; }
+
+.poster {
+  padding-top: 40px;
+  float: left; }
+
+.poster_name{
+  font-size: 18px;
+  font-family: good_dog;
+  color: #FF9834; }
+
 
