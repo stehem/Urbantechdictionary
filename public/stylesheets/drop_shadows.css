@@ -20,8 +20,8 @@
 
 .drop-shadow {
     position:relative;
-    float:left;
-    width:260px;    
+    /*float:left;  */ 
+   /* width:260px;   */ 
     padding:0.5em; 
     background:#fff;
     -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -187,8 +187,8 @@
     -webkit-box-shadow:none;
        -moz-box-shadow:none;
             box-shadow:none;
-    -webkit-transform:rotate(-3deg);    
-       -moz-transform:rotate(-3deg);   
+    -webkit-transform:rotate(-3deg);   
+       -moz-transform:rotate(5deg);     
         -ms-transform:rotate(-3deg);
          -o-transform:rotate(-3deg);
             transform:rotate(-3deg);

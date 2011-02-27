@@ -359,7 +359,7 @@
 .sexybutton.sexysimple.sexyblue		{ background-color: #015ea9; }
 .sexybutton.sexysimple.sexyteal		{ background-color: #2daebf; }
 .sexybutton.sexysimple.sexymagenta	{ background-color: #a9014b; }
-.sexybutton.sexysimple.sexypurple	{ background-color: #9d01a9; }
+.sexybutton.sexysimple.sexycustom	{ background-color: #e6e3d2; }
 
 /* Simple button sizes */
 .sexybutton.sexysimple.sexysmall          { padding: 4px 7px 5px; font-size: 10px !important; }

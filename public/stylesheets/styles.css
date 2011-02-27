@@ -51,8 +51,8 @@ ul{
 
 #headwrap {
   border-bottom: solid lightgray 1px;
-  padding-top: 25px;
-  height: 70px;
+  padding-top: 15px;
+  height: 40px;
   background: #E7E4D3; }
 
 #bottomwrap {
@@ -117,3 +117,33 @@ ul{
   padding-left: 5px;
   border-left: 3px solid #FF9834;
   color: #464646;}
+
+#new_def_word {
+  margin: 5px 0 5px 0;}
+
+
+
+#def_word,#def_def {
+  border: 1px solid lightgray;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background: #fff;
+  margin: 10px 0 10px 0;
+}
+
+#def_word {
+  height: 25px;
+}
+
+#def_def {
+  height: 75px;
+}
+
+#new_def {
+  padding: 10px;
+  margin-top: 20px;
+  background: #F1EFE2;}
+
+#add_def {
+  font-size: 16px;
+	font-family: good_dog; /* no .ttf */ }

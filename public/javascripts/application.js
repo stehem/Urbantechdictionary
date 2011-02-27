@@ -13,10 +13,3 @@ function empty_stuff(){
 }
 
 
-
-$(function() {
-
-
-
-
-});

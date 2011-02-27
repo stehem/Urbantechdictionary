@@ -15,7 +15,7 @@
 
 <div id="topline"></div>
 
-<div id="headwrap">
+<div id="headwrap" class="drop-shadow curved curved-hz-1">
 
 <div class="container_24">
 
@@ -38,6 +38,7 @@
 
 </div>
 
+
     <div class='clear'></div>
 
 
@@ -46,12 +47,15 @@
 
   <div class="container_24">
 
-    <div class="grid_16">
+    <div class="grid_19">
 
       <div id="main">
 
         <ul id="words_list">
         </ul>
+
+        <div id='latest'>
+        </div>
 
         <div id='word_title'>
         </div>
@@ -77,9 +81,9 @@
 
     </div>
 
-    <div class="grid_8">
+    <div class="grid_5">
 
-      <div id='sidebar'>
+<div class="drop-shadow curved curved-vt-1" id="sidebar">
 
           <div id='loggedas'>
                 <div><% if session[:user] %>
@@ -163,10 +167,12 @@ logout: function() {
 home: function() {
      $.post("/home", function (data) {
         empty_stuff();
+           $('#word_title').html('<h1>Latest definitions added</h1>');
         _.each(data, function(f){ 
-      var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "each_def"});
+      var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "drop-shadow curved curved-vt-2 each_def"});
         });
       });
+
   }
 
 });
@@ -230,7 +236,7 @@ var DefinitionStore = Backbone.Collection.extend({
   initialize: function(models,options) {
    this.word = options.word;
       this.each(function(def) {
-      var definition = new DefinitionsView({model: def, id: "def_"+def.id, className: "each_def"});
+      var definition = new DefinitionsView({model: def, id: "def_"+def.id, className: "drop-shadow curved curved-vt-2 each_def"});
       });
     },
 });
@@ -335,6 +341,7 @@ NewDefView = Backbone.View.extend({
   },
   render : function() {
   $(this.el).append(new EJS({url: '/javascripts/new_def.ejs'}).render());
+  $(this.el).addClass('drop-shadow curved curved-vt-1');
    }
 });
 
@@ -346,17 +353,11 @@ Backbone.history.start();
 
 
 
+_.each(<%= raw @latest %>, function(f){ 
+  var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "drop-shadow curved curved-vt-2 each_def"});
+});
+$('#word_title').html('<h1>Latest definitions added</h1>');
 
-
-
-
-
-
-
-
-        _.each(<%= raw @latest %>, function(f){ 
-      var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "each_def"});
-        });
 
 });
   </script>
