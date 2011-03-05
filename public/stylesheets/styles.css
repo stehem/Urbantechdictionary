@@ -47,7 +47,8 @@ ul{
   background: #FF9834; }
 
 #words_list {
-  list-style: none; }
+
+  margin-top: 20px;}
 
 #headwrap {
   border-bottom: solid lightgray 1px;
@@ -56,7 +57,7 @@ ul{
   background: #E7E4D3; }
 
 #bottomwrap {
-  background: #F1EFE2; }
+    background-color: #ffffff; }
 
 #definitions {
   list-style: none; }
@@ -75,11 +76,6 @@ ul{
   border-left: 6px solid #FF9834;
   padding-left: 5px;
   float: left; }
-
-#sidebar {
-  margin-top: 60px;
-  min-height: 500px;
-  background: #E7E4D3; }
 
 .vote_box{
   float: right; }
@@ -141,9 +137,25 @@ ul{
 
 #new_def {
   padding: 10px;
-  margin-top: 20px;
-  background: #F1EFE2;}
+  margin-top: 20px;}
 
 #add_def {
   font-size: 16px;
 	font-family: good_dog; /* no .ttf */ }
+
+#sidebar {
+  margin-top: 60px;
+  overflow:hidden;
+  background: #F1EFE2; }
+
+#sidebar li {
+  white-space: nowrap;
+  list-style: none;}
+
+#sidebar a {
+  font-size: 90%;
+  color: #464646;}
+
+.new_def_bgd {
+background: #F1EFE2;}
+

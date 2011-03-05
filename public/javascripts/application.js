@@ -10,6 +10,8 @@ function empty_stuff(){
   $('#main div').empty();
   $('#main ul').empty();
   $('div[id*="def_"]').remove();
+  $('#new_def').removeClass();
+  $('#words_list').removeClass();
 }
 
 

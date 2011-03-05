@@ -14,7 +14,7 @@ def create
   auth = request.env["omniauth.auth"]  
   @name = auth["user_info"]["name"]  
   session[:user] = @name
-  redirect_to "/#definition/new"
+  redirect_to root_url
 end  
 
 def destroy

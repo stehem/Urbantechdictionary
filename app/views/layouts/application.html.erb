@@ -13,99 +13,78 @@
 
   <body>
 
-<div id="topline"></div>
-
-<div id="headwrap" class="drop-shadow curved curved-hz-1">
-
-<div class="container_24">
+  <div id="topline"></div>
 
 
-    <div id="logo">
-      <%= link_to (image_tag "logo3.png"), "#/" %>
-    </div>
+  <div id="headwrap" class="drop-shadow curved curved-hz-1">
 
-    <div id="alphabet">
-      <% @letters.each do |f| %>
-      <%= link_to f, root_path+'#letter/'+f %>
-      <% end %>
-    </div>
+    <div class="container_24">
 
-    <div id="new_button">
-      <a class="sexybutton sexysimple sexyblue sexyxl" type="reset" href="#definition/new" ><div id="new_button_txt">New Definition</div></a>
-    </div>
-
-</div>
-
-</div>
-
-
-    <div class='clear'></div>
-
-
-
-<div id="bottomwrap">
-
-  <div class="container_24">
-
-    <div class="grid_19">
-
-      <div id="main">
-
-        <ul id="words_list">
-        </ul>
-
-        <div id='latest'>
-        </div>
-
-        <div id='word_title'>
-        </div>
-
-
-        <ul id="definitions">
-        </ul>
-
-
-        <div id='pagination'>
-        </div>
-
-        <div id='new_def'>
-        </div>
-
-        <div id='show_def'>
-        </div>
-
-        <div id='login_page'>
-        </div>
-
+      <div id="logo">
+        <%= link_to (image_tag "logo3.png"), "#/" %>
       </div>
 
-    </div>
+      <div id="alphabet">
+        <% @letters.each do |f| %>
+        <%= link_to f, root_path+'#letter/'+f %>
+        <% end %>
+      </div>
 
-    <div class="grid_5">
-
-<div class="drop-shadow curved curved-vt-1" id="sidebar">
-
-          <div id='loggedas'>
-                <div><% if session[:user] %>
-                logged in as <%= session[:user] %><a href="/#session">logout</a>
-                <% end %>
-                </div>
-              
-          </div>
-
+      <div id="new_button">
+        <a class="sexybutton sexysimple sexyblue sexyxl" type="reset" href="#definition/new">
+          <div id="new_button_txt">New Definition</div>
+        </a>
       </div>
 
     </div>
 
   </div>
 
-</div>
+
+  <div class='clear'></div>
 
 
+  <div id="bottomwrap">
 
+    <div class="container_24">
 
-    <div class='clear'></div>
+      <div class="grid_18 push_3">
 
+        <div id="main">
+
+          <div id="words_list">
+          </div>
+
+          <div id='latest'>
+          </div>
+
+          <div id='word_title'>
+          </div>
+
+          <ul id="definitions">
+          </ul>
+
+          <div id='pagination'>
+          </div>
+
+          <div id='new_def'>
+          </div>
+
+          <div id='show_def'>
+          </div>
+
+          <div id='login_page'>
+          </div>
+
+        </div> <! end of main >
+
+       </div> <! end of grid_19 >
+
+     </div> <! end of container24 >
+
+   </div> <! end of bottomwrap >
+
+   <div class='clear'></div>
 
 
 <script>
@@ -130,10 +109,14 @@ word_letter : function(letter) {
 show_word: function(id) {
       $('#words_list').html('');
       empty_stuff();
+      $('#sidebar').empty();
       var w = $.get("word/"+id, function(data){
       var title = new TitleView({word: data.word});
       wdefs = new DefinitionStore(data.coll, {word: data.word});
       var pagination = new PaginationView({word: data.word, pagination: data.pagination});
+     // _.each(data.words, function(f){ 
+      //  var sidebar = new SidebarView({model: f});
+     // });
     });
   },
 
@@ -253,6 +236,7 @@ WordView = Backbone.View.extend({
   render : function() {
     var self = this;
     this.words2render.each(function(word) {
+    $(self.el).addClass('drop-shadow curved curved-hz-1').addClass('new_def_bgd');
     $(self.el).append(new EJS({url: '/javascripts/wordlist1.ejs'}).render(word.toJSON()));
     });
    }
@@ -316,6 +300,18 @@ PaginationView = Backbone.View.extend({
 
 
 
+SidebarView = Backbone.View.extend({
+  el: $('#sidebar'),
+  initialize: function(options) {
+  this.render();
+    },
+  render : function() {
+  $(this.el).append(new EJS({url: '/javascripts/sidebar.ejs'}).render({word_sl: this.model.word, word_sl_id: this.model.id}));
+   }
+});
+
+
+
 NewDefView = Backbone.View.extend({
   el: $('#new_def'),
   initialize: function(options) {
@@ -341,7 +337,7 @@ NewDefView = Backbone.View.extend({
   },
   render : function() {
   $(this.el).append(new EJS({url: '/javascripts/new_def.ejs'}).render());
-  $(this.el).addClass('drop-shadow curved curved-vt-1');
+  $(this.el).addClass('drop-shadow raised new_def_bgd');
    }
 });
 

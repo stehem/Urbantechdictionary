@@ -11,13 +11,15 @@ end
 def show
   word = Word.find(params[:id])
   defs = word.definitions.select('id, definition, upv, dwv, poster').order('created_at DESC').paginate(:all, :page => params[:page] || 1, :per_page => 10)
+  #words = Word.select('word, id').where('word ~* ?', '^' + word.word[0,1])
   render :json => { :word => {:word => word.word, :id => word.id},
                     :coll => defs,
                     :pagination => {:current_page => defs.current_page,
                                     :per_page => defs.per_page,
                                     :total_entries => defs.total_entries,
                                     :next_page => defs.next_page,
-                                    :previous_page => defs.previous_page}
+                                    :previous_page => defs.previous_page}#,
+                    #:words => words
                    }
 end
 
