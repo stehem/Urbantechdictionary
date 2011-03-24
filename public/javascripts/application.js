@@ -14,4 +14,9 @@ function empty_stuff(){
   $('#words_list').removeClass();
 }
 
-
+function trim(w){
+  if (w.length > 22)
+    { return w.substring(0,20) + '...';}
+  else 
+    {return w;}
+}

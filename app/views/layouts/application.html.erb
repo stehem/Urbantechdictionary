@@ -53,7 +53,7 @@
         <div id="main">
 
           <div id="words_list">
-          </div>
+          </div>      
 
           <div id='latest'>
           </div>
@@ -85,6 +85,8 @@
    </div> <! end of bottomwrap >
 
    <div class='clear'></div>
+
+   <div id="bottomline"></div>
 
 
 <script>
@@ -150,7 +152,7 @@ logout: function() {
 home: function() {
      $.post("/home", function (data) {
         empty_stuff();
-           $('#word_title').html('<h1>Latest definitions added</h1>');
+           $('#word_title').html('Latest definitions added');
         _.each(data, function(f){ 
       var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "drop-shadow curved curved-vt-2 each_def"});
         });
@@ -239,6 +241,7 @@ WordView = Backbone.View.extend({
     $(self.el).addClass('drop-shadow curved curved-hz-1').addClass('new_def_bgd');
     $(self.el).append(new EJS({url: '/javascripts/wordlist1.ejs'}).render(word.toJSON()));
     });
+    $(self.el).append("<div class='clear'></div>");
    }
 });
 
@@ -352,7 +355,7 @@ Backbone.history.start();
 _.each(<%= raw @latest %>, function(f){ 
   var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "drop-shadow curved curved-vt-2 each_def"});
 });
-$('#word_title').html('<h1>Latest definitions added</h1>');
+$('#word_title').html('Latest definitions added');
 
 
 });

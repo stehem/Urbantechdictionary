@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
 def index
   @letters = ('A'..'Z').to_a
-  defis = Definition.includes(:word).order('created_at DESC')
+  defis = Definition.includes(:word).order('created_at DESC').limit(10)
   @latest = latest(defis).to_json
 end
 
