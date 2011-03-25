@@ -8,7 +8,11 @@ class DefinitionController < ApplicationController
 respond_to :json
 
 def show
-  defi = Definition.find(params[:id])
+  if params[:id] == "random"
+    defi = Definition.order("RANDOM()").first
+  else
+    defi = Definition.find(params[:id])
+  end
   word = defi.word
   render :json => {:word => { :word => word.word}, :definition => {:definition => defi.definition, :upv => defi.upv, :dwv => defi.dwv, :id => defi.id, :poster => defi.poster }}
 end

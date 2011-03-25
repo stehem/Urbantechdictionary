@@ -50,14 +50,23 @@
       <div class="grid_20 push_2">
         <div id="session">
 		        <% if session[:user] %>
-			<span class="poster_name"><%= session[:user] %> <%= link_to "logout","/#session", :id => "logout" %> </span>
+			<span class="poster_name"><%= session[:user] %> <%= link_to "logout","#", :id => "logout" %> </span>
+			<% else %>
+			<span class="poster_name"><%= link_to "login","#definition/new" %> </span>
 	                <% end %>
-	</div>      
+	</div> 
+        <div id="random">  
+        <%= link_to "Random", "#definition/random" %>   
+	</div> 
       </div>      
 
       <div class="grid_18 push_3">
 
         <div id="main">
+
+
+          <div id="words_list_hdr">
+          </div>   
 
           <div id="words_list">
           </div>      
@@ -108,6 +117,12 @@ $(document).ready(function () {
     $('.downvote,.upvote').live('click', function(e) {
     e.preventDefault();
     });
+    $('#logout').live('click', function() {
+     $.post("/logout", function (data) {
+      $('#session').empty().hide().html('<div>logged out</div>').fadeIn(1000).fadeOut(4500);
+	return false;
+      });
+    });
 });
 
 
@@ -116,9 +131,9 @@ routes : {
   "letter/:letter": "word_letter",
   "word/:id": "show_word",
   "vote/:id?v=:vtype": "vote",
+  "definition/random": "randomz",
   "definition/new": "new_def",
   "definition/:id": "show_def",
-  "session": "logout",
   "/": "home"
   },
 
@@ -165,22 +180,26 @@ show_def: function(id) {
     });
   },
 
-logout: function() {
-     $.post("/logout", function (data) {
-      $('#session').empty().hide().html('<div>logged out</div>').fadeIn(1000).fadeOut(3000);
-      });
-  },
-
 home: function() {
      $.post("/home", function (data) {
         empty_stuff();
-           $('#word_title').html('Latest definitions added');
+           $('#word_title').html('Latest definitions added:');
         _.each(data, function(f){ 
       var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "drop-shadow curved curved-vt-2 each_def"});
         });
       });
 
+  },
+
+randomz: function() {
+    empty_stuff();
+$.get('/definition/random',function(data){
+      var title = new TitleView({word: data.word});
+      sdef = new DefinitionStore(data.definition);
+});
+
   }
+
 
 });
 
@@ -246,8 +265,9 @@ WordView2 = Backbone.View.extend({
     },
   render : function() {
     var self = this;
+    $('#words_list_hdr').html('<h1>'+this.letter+'</h1>');
     _.each(this.words, function(word) {
-      $(self.el).addClass('drop-shadow curved curved-hz-1').addClass('new_def_bgd');
+      $(self.el).addClass('drop-shadow curved curved-vt-2').addClass('new_def_bgd');
       $(self.el).append(new EJS({url: '/javascripts/wordlist1.ejs'}).render({word: word.word, id: word.id}));
     });
   $(this.el).append(new EJS({url: '/javascripts/pagination2.ejs'}).render({letter: this.letter, next_page: this.pagination.next_page, previous_page: this.pagination.previous_page}));
@@ -365,7 +385,7 @@ Backbone.history.start();
 _.each(<%= raw @latest %>, function(f){ 
   var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "drop-shadow curved curved-vt-2 each_def"});
 });
-$('#word_title').html('Latest definitions added');
+$('#word_title').html('Latest definitions added:');
 
 
 });

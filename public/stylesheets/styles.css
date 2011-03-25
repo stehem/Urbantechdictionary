@@ -58,8 +58,7 @@ ul{
   background: #FF9834; }
 
 #words_list {
-
-  margin-top: 20px;}
+  margin-top: 5px;}
 
 #headwrap {
   border-bottom: solid lightgray 1px;
@@ -76,7 +75,7 @@ ul{
 .each_def {
   display: block;
   padding: 10px;
-  margin: 10px 0 0 0;
+  margin: 20px 0 0 0;
   border: solid lightgray 1px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -87,6 +86,11 @@ ul{
   border-left: 6px solid #FF9834;
   padding-left: 5px;
   float: left; }
+
+
+#w_title h1{
+  font-size: 140%;
+	font-family: good_dog; /* no .ttf */}
 
 .vote_box{
   float: right; }
@@ -119,7 +123,8 @@ ul{
   color: #FF9834; }
 
 .inwtitle {
-  font-size: 125%;
+  font-weight: bold;
+
   margin-bottom: 5px;
   padding-left: 5px;
   border-left: 3px solid #FF9834;
@@ -171,7 +176,7 @@ ul{
 background: #F1EFE2;}
 
 #word_title {
-  font-size: 130%;
+  font-size: 150%;
   font-family: good_dog;}
 
 .indiv_wlist{
@@ -180,6 +185,7 @@ padding-left: 5px;
 border-left: 2px solid #FF9834;}
 
 .prevnext{
+  font-size: 120%;
   font-family: good_dog;}
 
 #session{
@@ -189,3 +195,19 @@ float:right;}
 
 #session a{
 color: #1067AE;}
+
+.login_text{
+  font-size: 150%;
+font-family: good_dog;}
+
+#words_list_hdr h1{
+font-family: good_dog;}
+
+#random {
+float: left;
+padding-top:5px;
+font-family: good_dog;}
+
+#random a{
+    font-size: 20px;
+    color: #FF9834;}
