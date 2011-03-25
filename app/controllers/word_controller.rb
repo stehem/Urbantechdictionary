@@ -4,8 +4,14 @@ respond_to :json
 
 
 def index
-  words = Word.select('word, id').where('word ~* ?', '^' + params[:letter]).order('word').paginate(:all, :page => params[:page] || 1, :per_page => 3)  
-  render :json => words
+  words = Word.select('word, id').where('word ~* ?', '^' + params[:letter]).order('word').paginate(:all, :page => params[:page] || 1, :per_page => 2)  
+  render :json => {:words => words,
+                   :pagination => {:current_page => words.current_page,
+                                    :per_page => words.per_page,
+                                    :total_entries => words.total_entries,
+                                    :next_page => words.next_page,
+                                    :previous_page => words.previous_page}
+                   }
 		  
 
               
@@ -15,7 +21,7 @@ end
 
 def show
   word = Word.find(params[:id])
-  defs = word.definitions.select('id, definition, upv, dwv, poster').order('upv DESC').paginate(:all, :page => params[:page] || 1, :per_page => 10)
+  defs = word.definitions.select('id, definition, upv, dwv, poster').order('upv DESC').paginate(:all, :page => params[:page] || 1, :per_page => 1)
   #words = Word.select('word, id').where('word ~* ?', '^' + word.word[0,1])
   render :json => { :word => {:word => word.word, :id => word.id},
                     :coll => defs,

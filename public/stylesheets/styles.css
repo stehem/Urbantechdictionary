@@ -23,7 +23,7 @@ ul{
   color: #464646; }
 
 #main {
-  min-height: 600px;
+  min-height: 700px;
   padding: 10px; }
 
 #alphabet{
@@ -45,8 +45,12 @@ ul{
 #alphabet {
   margin: 0 20px 0 20px; }
 
+#topline0 {
+  height: 1px;
+  background: black; }
+
 #topline {
-  height: 5px;
+  height: 10px;
   background: #FF9834; }
 
 #bottomline {
