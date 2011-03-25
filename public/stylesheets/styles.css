@@ -178,3 +178,14 @@ background: #F1EFE2;}
 margin-bottom: 5px;
 padding-left: 5px;
 border-left: 2px solid #FF9834;}
+
+.prevnext{
+  font-family: good_dog;}
+
+#session{
+padding-top:5px;
+font-family: good_dog;
+float:right;}
+
+#session a{
+color: #1067AE;}

@@ -20,3 +20,7 @@ function trim(w){
   else 
     {return w;}
 }
+
+$('.downvote').click(function(e) {
+    e.preventDefault();
+});
