@@ -229,8 +229,9 @@ var Definition = Backbone.Model.extend({
     else if (attrs.dwv) {postvote(attrs,"n");}
     else if ("word" in attrs && "definition" in attrs) {
         error = {};
-        if (attrs.word == ''){error.word = "payes ton word";}
-        if (attrs.definition == ''){error.definition = "payes ta def";}
+        if (attrs.word == ''){error.word = "cannot be empty";}
+        if (attrs.definition == ''){error.definition = "cannot be empty";}
+        if (attrs.definition.length > 1 && attrs.definition.length < 30){error.definition = "must be at least 30 caracters";}
         if (!_.isEmpty(error)) {return error;} 
     ;}
       function postvote(attrs,vtype){
@@ -364,8 +365,9 @@ NewDefView = Backbone.View.extend({
     this.render();
     autocomp();
     this.model.bind("error", function(model,error) {
-      if (!_.isUndefined(error.word)){$('#new_def_word').append('<div>'+error.word+'</div>');}              
-      if (!_.isUndefined(error.definition)){$('#new_def_def').append('<div>'+error.definition+'</div>');}              
+      if (!_.isUndefined(error.word)){$('#new_def_word').append('<div class="error_av">'+error.word+'</div>');}              
+      if (!_.isUndefined(error.definition)){$('#new_def_def').append('<div class="error_av">'+error.definition+'</div>');} 
+      if ($('.error_av')) {$('.error_av').effect("pulsate", { times:3 }, 1000, function(){$(this).remove();})}             
     });
   },
   events: {

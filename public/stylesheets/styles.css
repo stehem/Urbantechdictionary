@@ -145,10 +145,12 @@ ul{
 
 #def_word {
   height: 25px;
+  width: 450px;
 }
 
 #def_def {
-  height: 75px;
+  height: 100px;
+  width: 450px;
 }
 
 #new_def {
@@ -219,3 +221,11 @@ float: right;}
 .error_av{
 color: #FF9834;
 }
+
+.label{
+font-size: 150%;
+font-family: good_dog;}
+
+.gdlns{
+font-size: 75%;
+font-style: italic;}
