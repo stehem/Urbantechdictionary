@@ -21,6 +21,4 @@ function trim(w){
     {return w;}
 }
 
-$('.downvote').click(function(e) {
-    e.preventDefault();
-});
+

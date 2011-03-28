@@ -55,8 +55,14 @@
 			<span class="poster_name"><%= link_to "login","#definition/new" %> </span>
 	                <% end %>
 	</div> 
+
+        <div id="twitter">  
+<a href="http://twitter.com/share" class="twitter-share-button" data-text="Urban Tech Dictionary" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	</div> 
+
+
         <div id="random">  
-        <%= link_to "Random", "#definition/random" %>   
+        <%= link_to "Random", "#word/random" %>   
 	</div> 
       </div>      
 
@@ -114,14 +120,29 @@ head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js","http
 
 
 $(document).ready(function () {
+
     $('.downvote,.upvote').live('click', function(e) {
     e.preventDefault();
     });
+
     $('#logout').live('click', function() {
      $.post("/logout", function (data) {
-      $('#session').empty().hide().html('<div>logged out</div>').fadeIn(1000).fadeOut(4500);
-	return false;
+      $('#session').html('<div>logged out</div>').fadeOut(5000, function(){
+      $(this).html('<span class="poster_name"><a href="#definition/new">login</a> </span>').fadeIn(1500);
       });
+      return false;
+      });
+    });
+
+    $('#random a').click(function(){
+      empty_stuff();
+      $.get('/word/random',function(data){
+      var title = new TitleView({word: data.word});
+      var wdefs = new DefinitionStore(data.coll, {word: data.word});
+      var pagination = new PaginationView({word: data.word, pagination: data.pagination});
+      });
+      window.location.hash = '/word/random';
+      return false;
     });
 });
 
@@ -131,7 +152,6 @@ routes : {
   "letter/:letter": "word_letter",
   "word/:id": "show_word",
   "vote/:id?v=:vtype": "vote",
-  "definition/random": "randomz",
   "definition/new": "new_def",
   "definition/:id": "show_def",
   "/": "home"
@@ -188,15 +208,6 @@ home: function() {
       var definitionz = new DefinitionsView({model: new Definition(f), id: "def_"+f.id, className: "drop-shadow curved curved-vt-2 each_def"});
         });
       });
-
-  },
-
-randomz: function() {
-    empty_stuff();
-$.get('/definition/random',function(data){
-      var title = new TitleView({word: data.word});
-      sdef = new DefinitionStore(data.definition);
-});
 
   }
 
@@ -306,6 +317,7 @@ DefinitionsView = Backbone.View.extend({
           this.model.bind("error", function(model, error) {
             var selector = '#def_' + model.get('id');
             $(selector).append('<div id="error_av_'+model.get('id')+'" class="error_av">'+error+'</div>');
+            $('#error_av_'+model.get('id')).effect("pulsate", { times:2 }, 1000, function(){$(this).fadeOut(1000, function(){$(this).remove();});});
           });
     this.render();
       },
@@ -377,7 +389,7 @@ NewDefView = Backbone.View.extend({
 
 
 
-var yC = new AppController;
+var utechdictionary = new AppController;
 Backbone.history.start();
 
 

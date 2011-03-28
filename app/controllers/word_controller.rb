@@ -16,7 +16,11 @@ end
 
 
 def show
-  word = Word.find(params[:id])
+  if params[:id] == "random"
+    word = Word.order("RANDOM()").first
+  else
+    word = Word.find(params[:id])
+  end
   defs = word.definitions.select('id, definition, upv, dwv, poster').order('upv DESC').paginate(:all, :page => params[:page] || 1, :per_page => 10)
   #words = Word.select('word, id').where('word ~* ?', '^' + word.word[0,1])
   render :json => { :word => {:word => word.word, :id => word.id},

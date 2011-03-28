@@ -211,3 +211,11 @@ font-family: good_dog;}
 #random a{
     font-size: 20px;
     color: #FF9834;}
+
+#twitter{
+margin: 5px 10px 0 0;
+float: right;}
+
+.error_av{
+color: #FF9834;
+}
