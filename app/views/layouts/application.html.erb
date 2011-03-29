@@ -141,6 +141,10 @@ head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js","http
 
 $(document).ready(function () {
 
+    $.ajaxSetup ({
+    cache: false
+    });
+
     $('.downvote,.upvote').live('click', function(e) {
     e.preventDefault();
     });
