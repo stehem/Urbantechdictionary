@@ -350,7 +350,9 @@ DefinitionsView = Backbone.View.extend({
           this.model.bind("error", function(model, error) {
             var selector = '#def_' + model.get('id');
             $(selector).append('<div id="error_av_'+model.get('id')+'" class="error_av">'+error+'</div>');
-            $('#error_av_'+model.get('id')).effect("pulsate", { times:2 }, 1000, function(){$(this).fadeOut(1000, function(){$(this).remove();});});
+            if (!$.browser.msie) {
+              $('#error_av_'+model.get('id')).effect("pulsate", { times:2 }, 1000, function(){$(this).fadeOut(1000, function(){$(this).remove();});});
+            }           
           });
     this.render();
       },
