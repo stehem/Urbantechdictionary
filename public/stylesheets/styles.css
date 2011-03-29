@@ -1,11 +1,13 @@
 img {
   border: 0; }
 
-@font-face {
-	font-family: good_dog;
-	src: url('/stylesheets/GoodDog.otf');
-}
 
+
+
+@font-face {
+  font-family: 'good_dog';
+  src: url('/stylesheets/GoodDog-webfont.eot?') format('eot'), url('/stylesheets/GoodDog-webfont.woff') format('woff'), url('/stylesheets/GoodDog-webfont.ttf') format('truetype');
+}
 
 
 body, h1 {
