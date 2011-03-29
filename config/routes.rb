@@ -10,6 +10,7 @@ APP1::Application.routes.draw do
   match "/auth/:provider/callback" => "session#create"  
   match "/home" => "home#latest_defs"  
 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

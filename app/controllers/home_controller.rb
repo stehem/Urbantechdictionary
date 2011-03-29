@@ -15,7 +15,7 @@ def latest_defs
 end
 
 def latest(f)
-  f.collect! {|i| {
+  f.collect {|i| {
                     "word" => i.word.word, 
                     "definition" => i.definition,
                     "id" => i.id,

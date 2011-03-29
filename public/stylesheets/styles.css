@@ -54,7 +54,7 @@ ul{
   background: #FF9834; }
 
 #bottomline {
-  height: 15px;
+  height: 25px;
   background: #FF9834; }
 
 #words_list {
@@ -227,5 +227,14 @@ font-size: 150%;
 font-family: good_dog;}
 
 .gdlns{
-font-size: 75%;
+font-size: 65%;
 font-style: italic;}
+
+#about_link{
+font-size: 135%;
+font-family: good_dog;
+text-align: center;}
+
+#about_link a{
+text-decoration: none;
+color: black;}

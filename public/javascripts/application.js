@@ -7,11 +7,9 @@ function autocomp(){
 }
 
 function empty_stuff(){
-  $('#main div').empty();
-  $('#main ul').empty();
+  $('#main div,#main ul').empty();
   $('div[id*="def_"]').remove();
-  $('#new_def').removeClass();
-  $('#words_list').removeClass();
+  $('#new_def,#words_list,#about_page').removeClass();
 }
 
 function trim(w){
