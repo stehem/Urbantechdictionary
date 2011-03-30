@@ -14,7 +14,7 @@ def show
 end
 
 def create
-  word = Word.where('word = ?', params[:word]).first
+  word = Word.where('word = ?', params[:word].strip).first
     if word
       defi = word.definitions.create(:definition => clean(params[:definition]), :poster => session[:user])
     else
