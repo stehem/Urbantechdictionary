@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 
 def clean(param)
- clean_param = Sanitize.clean(param)
+ clean_param = Sanitize.clean(param, :elements => ['\n'])
 end
 
 
