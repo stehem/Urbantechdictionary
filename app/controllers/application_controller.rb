@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 
 def clean(param)
- clean_param = Sanitize.clean(param, Sanitize::Config::BASIC)
+ clean_param = (Sanitize.clean(param)).gsub(/\n/, '</br>')
 end
 
 
