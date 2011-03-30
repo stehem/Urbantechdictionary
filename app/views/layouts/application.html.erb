@@ -38,7 +38,7 @@
 
       <div id="alphabet">
         <% @letters.each do |f| %>
-        <%= link_to f, root_path+'#letter/'+f %>
+        <%= link_to f, root_path+'#letter/'+f+'/page/1' %>
         <% end %>
       </div>
 
@@ -170,7 +170,7 @@ $(document).ready(function () {
 
 var AppController = Backbone.Controller.extend({
 routes : {
-  "letter/:letter": "word_letter",
+  "letter/:letter/page/:page": "word_letter",
   "word/:id": "show_word",
   "vote/:id?v=:vtype": "vote",
   "definition/new": "new_def",
@@ -179,9 +179,9 @@ routes : {
   "/": "home"
   },
 
-word_letter : function(letter) {
+word_letter : function(letter,page) {
    empty_stuff();
-   $.get('/word?letter='+letter, function(data){
+   $.get('/word?letter='+letter+'&page='+page, function(data){
       var wview = new WordView2({coll: data.words, letter: letter, pagination: data.pagination});
   });
   _gaq.push(['_trackPageview', '/letter/' + letter]);

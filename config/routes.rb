@@ -1,7 +1,8 @@
 APP1::Application.routes.draw do
 
   root :to => "home#index"
-  resources :word
+
+  resources :word 
   resources :vote
   resources :definition
   match 'logout' => 'session#destroy'

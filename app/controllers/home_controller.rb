@@ -10,7 +10,7 @@ end
 
 
 def latest_defs
-  defis = Definition.includes(:word).order('created_at DESC')
+  defis = Definition.includes(:word).order('created_at DESC').limit(10)
   render :json => latest(defis)
 end
 

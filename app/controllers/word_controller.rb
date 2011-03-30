@@ -4,7 +4,7 @@ respond_to :json
 
 
 def index
-  words = Word.select('word, id').where('word ~* ?', '^' + params[:letter]).order('word').paginate(:all, :page => params[:page] || 1, :per_page => 10)  
+  words = Word.select('word, id').where('word ~* ?', '^' + params[:letter]).order('word').paginate(:all, :page => params[:page] || 1, :per_page => 60)  
   render :json => {:words => words,
                    :pagination => {:current_page => words.current_page,
                                     :per_page => words.per_page,
