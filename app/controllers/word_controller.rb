@@ -36,8 +36,8 @@ end
 
 
 def autocomplete
-  query = "%#{params[:term].strip}%"
-  words = Word.where('word iLIKE ?', query).select('word')
+  query = "%#{params[:term].strip.capitalize}%"
+  words = Word.where('word LIKE ?', query).select('word')
   render :json => words.collect {|i| {"label" => i.word, "value" => i.word}}
 end
 
