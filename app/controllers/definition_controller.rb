@@ -14,11 +14,11 @@ def show
 end
 
 def create
-  word = Word.where('word = ?', params[:word].strip.capitalize).first
+  word = Word.where('word = ?', params[:word].strip.titleize).first
     if word
       defi = word.definitions.create(:definition => clean(params[:definition]), :poster => session[:user])
     else
-      newword = Word.create(:word => clean(params[:word].strip.capitalize))
+      newword = Word.create(:word => clean(params[:word].strip.titleize))
       defi = newword.definitions.create(:definition => clean(params[:definition]), :poster => session[:user])
     end
   render :json => {:word => clean(params[:word]), :definition => clean(params[:definition]), :id => defi.id }
